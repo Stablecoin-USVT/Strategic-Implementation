@@ -12,566 +12,532 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: white;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #ffffff;
             min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        .header {
-            background: linear-gradient(135deg, #990001 0%, #B30002 50%, #CC0003 100%);
+        .header-section {
+            background: #EE1C25;
             color: white;
-            padding: 60px 40px;
-            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 60px;
             text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(153, 0, 1, 0.3);
-            position: relative;
-            overflow: hidden;
         }
 
-        .header::before {
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .document-title {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .document-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .value-display {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 400px;
+            font-size: 2rem;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        .access-button {
+            background: white;
+            color: #EE1C25;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .access-button:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-color: #EE1C25;
+        }
+
+        .metric-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #EE1C25;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .content-section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #EE1C25;
         }
 
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 1;
-        }
-
-        .header .subtitle {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .value-highlight {
-            background: rgba(255,255,255,0.15);
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .full-version-btn {
-            background: rgba(255,255,255,0.95);
-            color: #990001;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 25px;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 2px solid transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        .full-version-btn:hover {
-            background: white;
-            color: #990001;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            border-color: rgba(255,255,255,0.5);
-        }
-
-        .floating-access-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #990001, #CC0003);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 5px 20px rgba(153, 0, 1, 0.6);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-
-        .floating-access-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(153, 0, 1, 0.8);
-            animation: none;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 5px 20px rgba(153, 0, 1, 0.6); }
-            50% { box-shadow: 0 5px 25px rgba(153, 0, 1, 0.8); }
-            100% { box-shadow: 0 5px 20px rgba(153, 0, 1, 0.6); }
-        }
-
-        .summary-grid {
+        .overview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
+            margin: 40px 0;
         }
 
-        .summary-card {
-            background: linear-gradient(135deg, #990001, #B30002);
+        .overview-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-color: #EE1C25;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #EE1C25;
             color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(153, 0, 1, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(153, 0, 1, 0.3);
-        }
-
-        .summary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(153, 0, 1, 0.3);
-        }
-
-        .summary-card h3 {
-            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .card-description {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .timeline-section {
+            background: #f8f9fa;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border-radius: 8px;
+            border: 1px solid #e0e6ed;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-card {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 8px;
+            position: relative;
+            border: 1px solid #e0e6ed;
+            transition: all 0.2s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-color: #EE1C25;
+        }
+
+        .phase-indicator {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            width: 35px;
+            height: 35px;
+            background: #EE1C25;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .phase-title {
+            margin-top: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a202c;
             margin-bottom: 15px;
+        }
+
+        .phase-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase-list li {
+            padding: 6px 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        .phase-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #EE1C25;
+            font-weight: bold;
+        }
+
+        .benefits-section {
+            background: #EE1C25;
+            color: white;
+            padding: 60px 40px;
+            margin: 60px 0;
+            border-radius: 8px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .benefit-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .benefit-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .icon {
-            width: 30px;
-            height: 30px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+        .benefit-description {
+            line-height: 1.6;
+            opacity: 0.95;
         }
 
-        .strategic-framework {
-            background: linear-gradient(135deg, #990001, #B30002);
-            color: white;
+        .risk-management-card {
+            background: #ffffff;
+            border: 2px solid #EE1C25;
             padding: 40px;
-            border-radius: 20px;
             margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(153, 0, 1, 0.2);
+            border-radius: 8px;
         }
 
-        .strategic-framework h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-
-        .framework-grid {
+        .risk-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .framework-item {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .framework-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .framework-item:hover::before {
-            left: 100%;
-        }
-
-        .framework-item:hover {
-            border-color: white;
-            transform: scale(1.02);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .phase-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .phase-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .phase-desc {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.4;
-        }
-
-        .benefits-section {
-            background: linear-gradient(135deg, #990001, #B30002);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(153, 0, 1, 0.2);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .benefit-item {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid white;
-            transition: transform 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .benefit-item:hover {
-            transform: translateX(5px);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .benefit-item h4 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .implementation-timeline {
-            background: linear-gradient(135deg, #990001, #B30002);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(153, 0, 1, 0.2);
-        }
-
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .timeline-phase {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            position: relative;
-            transition: transform 0.3s;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .timeline-phase:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .timeline-number {
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            color: #990001;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .timeline-phase h4 {
-            margin-top: 10px;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .key-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #990001, #B30002);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(153, 0, 1, 0.2);
-            border: 1px solid rgba(153, 0, 1, 0.3);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            font-style: italic;
+        .risk-item {
+            padding: 15px;
             background: #f8f9fa;
-            margin-top: 40px;
-            border-radius: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #EE1C25;
+        }
+
+        .risk-item strong {
+            color: #EE1C25;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .document-footer {
+            text-align: center;
+            padding: 50px 40px;
+            background: #f8f9fa;
+            margin-top: 60px;
+            border-radius: 8px;
+            border: 1px solid #e0e6ed;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .floating-access {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #EE1C25;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(238, 28, 37, 0.3);
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        .floating-access:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(238, 28, 37, 0.4);
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .document-title {
+                font-size: 2.5rem;
             }
-            .header .subtitle {
-                font-size: 1.1rem;
+            
+            .document-subtitle {
+                font-size: 1.2rem;
             }
-            .value-highlight {
+            
+            .value-display {
                 font-size: 1.8rem;
+                padding: 25px;
             }
+            
             .container {
-                padding: 15px;
+                padding: 20px 15px;
             }
-            .full-version-btn {
-                font-size: 1rem;
-                padding: 12px 25px;
+            
+            .overview-grid {
+                grid-template-columns: 1fr;
             }
-            .floating-access-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 20px;
-                font-size: 0.9rem;
+            
+            .timeline-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(44, 83, 100, 0.1);
-            animation: float 25s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-circle" style="width: 80px; height: 80px; left: 5%; animation-delay: -8s;"></div>
-        <div class="floating-circle" style="width: 60px; height: 60px; left: 50%; animation-delay: -20s;"></div>
-        <div class="floating-circle" style="width: 100px; height: 100px; left: 85%; animation-delay: -12s;"></div>
-    </div>
-
     <div class="container">
         <!-- Header Section -->
-        <div class="header">
-            <h1>Strategic Implementation of USVT</h1>
-            <div class="subtitle">Global Financial Restructuring & Sovereign Debt Solutions</div>
-            <div class="value-highlight">$1 Trillion USD Financial Infrastructure</div>
-            <a href="https://stablecoin-usvt.github.io/Strategic-Implementation-full-doc/" class="full-version-btn" target="_blank">📄 Access Complete Strategic Document</a>
-        </div>
-
-        <!-- Key Statistics -->
-        <div class="key-stats">
-            <div class="stat-card">
-                <div class="stat-number">$1T</div>
-                <div class="stat-label">USD Initiative</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">107</div>
-                <div class="stat-label">Document Pages</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">2-4</div>
-                <div class="stat-label">Year Timeline</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">$22B</div>
-                <div class="stat-label">Uganda Pilot</div>
+        <div class="header-section animate-in">
+            <div class="header-content">
+                <h1 class="document-title">Strategic Implementation of USVT</h1>
+                <p class="document-subtitle">Global Financial Restructuring & Sovereign Debt Solutions</p>
+                <div class="value-display">$1 Trillion USD Financial Infrastructure</div>
+                <button class="access-button" onclick="openFullDocument()">
+                    <span>📄</span>
+                    Access Complete Strategic Document
+                </button>
             </div>
         </div>
 
-        <!-- Summary Grid -->
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3><span class="icon">🎯</span>Strategic Vision</h3>
-                <p>USVT functions as a complementary rather than disruptive force within the global monetary system. Built upon USD reserve-backed structure and issued via Hong Kong, ensuring alignment with both Western and Eastern financial interests while providing Shariah-compliant liquidity solutions.</p>
+        <!-- Key Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card animate-in">
+                <span class="metric-number">$1T</span>
+                <div class="metric-label">USD Reserve Backing</div>
             </div>
-
-            <div class="summary-card">
-                <h3><span class="icon">🏦</span>Banking Integration</h3>
-                <p>Strategic partnerships with HSBC HK, Standard Chartered HK, BOC HK, and VISA enable seamless integration into existing financial infrastructure while maintaining full regulatory compliance and institutional credibility.</p>
+            <div class="metric-card animate-in">
+                <span class="metric-number">3</span>
+                <div class="metric-label">Implementation Phases</div>
             </div>
-
-            <div class="summary-card">
-                <h3><span class="icon">🌍</span>Sovereign Solutions</h3>
-                <p>Innovative debt relief model demonstrated through Uganda's $22B pilot program, replacing high-interest IMF/World Bank debt with asset-backed, Shariah-compliant financing structures that preserve national sovereignty.</p>
+            <div class="metric-card animate-in">
+                <span class="metric-number">$22B</span>
+                <div class="metric-label">Uganda Pilot Program</div>
             </div>
-
-            <div class="summary-card">
-                <h3><span class="icon">⚖️</span>Regulatory Framework</h3>
-                <p>Comprehensive legal and governance structure ensuring compliance with HKMA, Basel III, AAOIFI, IFSB standards while facilitating cross-border adoption through multi-jurisdictional regulatory alignment.</p>
+            <div class="metric-card animate-in">
+                <span class="metric-number">2025</span>
+                <div class="metric-label">Initiative Launch</div>
             </div>
         </div>
 
-        <!-- Strategic Framework -->
-        <div class="strategic-framework">
-            <h2>Multi-Phase Implementation Strategy</h2>
-            <div class="framework-grid">
-                <div class="framework-item">
-                    <span class="phase-number">Phase 1</span>
-                    <div class="phase-title">Institutional Integration (0-12 Months)</div>
-                    <div class="phase-desc">Banking partnerships, regulatory approvals, initial $1T deployment, and pilot sovereign credit programs</div>
+        <!-- Strategic Overview -->
+        <div class="content-section">
+            <h2 class="section-title">Strategic Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card animate-in">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Strategic Vision</h3>
+                    </div>
+                    <p class="card-description">USVT functions as a complementary rather than disruptive force within the global monetary system. Built upon USD reserve-backed structure and issued via Hong Kong, ensuring alignment with both Western and Eastern financial interests while providing Shariah-compliant liquidity solutions.</p>
                 </div>
-                <div class="framework-item">
-                    <span class="phase-number">Phase 2</span>
-                    <div class="phase-title">Government Engagement (12-24 Months)</div>
-                    <div class="phase-desc">Uganda debt relief pilot, central bank engagement, sovereign credit facilities, and trade finance expansion</div>
-                </div>
-                <div class="framework-item">
-                    <span class="phase-number">Phase 3</span>
-                    <div class="phase-title">Global Recognition (24-48 Months)</div>
-                    <div class="phase-desc">Central bank integration, public disclosure, regulatory adoption, and global trade settlement integration</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Key Benefits -->
-        <div class="benefits-section">
-            <h2 style="color: white; text-align: center; margin-bottom: 20px; font-size: 2.2rem;">Transformative Benefits</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <h4>🏛️ USD Stability Enhancement</h4>
-                    <p>Strengthens rather than weakens USD's global reserve status through structured reserve backing and controlled issuance mechanisms</p>
+                <div class="overview-card animate-in">
+                    <div class="card-header">
+                        <div class="card-icon">🏦</div>
+                        <h3 class="card-title">Banking Integration</h3>
+                    </div>
+                    <p class="card-description">Strategic partnerships with HSBC HK, Standard Chartered HK, BOC HK, and VISA enable seamless integration into existing financial infrastructure while maintaining full regulatory compliance and institutional credibility.</p>
                 </div>
-                <div class="benefit-item">
-                    <h4>💰 Sovereign Debt Relief</h4>
-                    <p>Asset-backed trust model enables sustainable debt resolution in emerging markets, replacing predatory lending with ethical alternatives</p>
+
+                <div class="overview-card animate-in">
+                    <div class="card-header">
+                        <div class="card-icon">🌍</div>
+                        <h3 class="card-title">Sovereign Solutions</h3>
+                    </div>
+                    <p class="card-description">Innovative debt relief model demonstrated through Uganda's $22B pilot program, replacing high-interest IMF/World Bank debt with asset-backed, Shariah-compliant financing structures that preserve national sovereignty.</p>
                 </div>
-                <div class="benefit-item">
-                    <h4>🕌 Shariah Compliance</h4>
-                    <p>Fully riba-free alternative to IMF/World Bank lending, opening access to Islamic finance markets and sovereign wealth funds</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>📈 Non-Inflationary Growth</h4>
-                    <p>Asset-backed liquidity model preserves purchasing power while expanding financial access without monetary inflation risks</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>🌐 Geopolitical Balance</h4>
-                    <p>Hong Kong issuance ensures regulatory flexibility while maintaining ties to both Chinese and Western financial systems</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>🔗 Financial Integration</h4>
-                    <p>Seamless interoperability with existing banking systems, payment networks, and regulatory frameworks</p>
+
+                <div class="overview-card animate-in">
+                    <div class="card-header">
+                        <div class="card-icon">⚖️</div>
+                        <h3 class="card-title">Regulatory Framework</h3>
+                    </div>
+                    <p class="card-description">Comprehensive legal and governance structure ensuring compliance with HKMA, Basel III, AAOIFI, IFSB standards while facilitating cross-border adoption through multi-jurisdictional regulatory alignment.</p>
                 </div>
             </div>
         </div>
 
         <!-- Implementation Timeline -->
-        <div class="implementation-timeline">
-            <h2 style="color: white; text-align: center; margin-bottom: 20px; font-size: 2.2rem;">Implementation Roadmap</h2>
-            <div class="timeline">
-                <div class="timeline-phase">
-                    <div class="timeline-number">1</div>
-                    <h4>Foundation (0-12 Months)</h4>
-                    <ul style="padding-left: 20px;">
+        <div class="timeline-section animate-in">
+            <h2 class="section-title" style="color: #1a202c;">Multi-Phase Implementation Strategy</h2>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="phase-indicator">1</div>
+                    <h4 class="phase-title">Foundation Phase (0-12 Months)</h4>
+                    <ul class="phase-list">
                         <li>HK private bank acquisition with full licenses</li>
                         <li>$1T USD reserve deployment and liquidity model</li>
                         <li>Banking partnerships (HSBC, SC, BOC, VISA)</li>
                         <li>Regulatory alignment and institutional integration</li>
                     </ul>
                 </div>
-                <div class="timeline-phase">
-                    <div class="timeline-number">2</div>
-                    <h4>Sovereign Engagement (12-24 Months)</h4>
-                    <ul style="padding-left: 20px;">
+                <div class="timeline-card">
+                    <div class="phase-indicator">2</div>
+                    <h4 class="phase-title">Sovereign Engagement (12-24 Months)</h4>
+                    <ul class="phase-list">
                         <li>Uganda $22B debt relief pilot program</li>
                         <li>African, GCC, and Asian central bank engagement</li>
                         <li>Shariah-compliant sovereign credit facilities</li>
                         <li>Trade finance and infrastructure programs</li>
                     </ul>
                 </div>
-                <div class="timeline-phase">
-                    <div class="timeline-number">3</div>
-                    <h4>Global Recognition (24-48 Months)</h4>
-                    <ul style="padding-left: 20px;">
+                <div class="timeline-card">
+                    <div class="phase-indicator">3</div>
+                    <h4 class="phase-title">Global Recognition (24-48 Months)</h4>
+                    <ul class="phase-list">
                         <li>Central bank integration in Islamic finance hubs</li>
                         <li>Public disclosure and regulatory adoption</li>
                         <li>Global trade settlement integration</li>
@@ -581,38 +547,77 @@
             </div>
         </div>
 
-        <!-- Risk Management Summary -->
-        <div class="summary-card" style="margin: 40px 0;">
-            <h3><span class="icon">🛡️</span>Comprehensive Risk Management</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-                <div>
-                    <strong>Regulatory Risk:</strong> Multi-jurisdictional compliance with HKMA, Basel III, and Islamic finance standards
+        <!-- Benefits Section -->
+        <div class="benefits-section animate-in">
+            <h2 class="section-title" style="color: white;">Key Benefits & Outcomes</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h4 class="benefit-title">🏛️ USD Stability Enhancement</h4>
+                    <p class="benefit-description">Strengthens rather than weakens USD's global reserve status through structured reserve backing and controlled issuance mechanisms</p>
                 </div>
-                <div>
-                    <strong>Geopolitical Risk:</strong> Strategic positioning as complementary system maintaining USD stability
+                <div class="benefit-card">
+                    <h4 class="benefit-title">💰 Sovereign Debt Relief</h4>
+                    <p class="benefit-description">Asset-backed trust model enables sustainable debt resolution in emerging markets, replacing predatory lending with ethical alternatives</p>
                 </div>
-                <div>
-                    <strong>Financial Risk:</strong> Asset-backed reserves with automated stabilization mechanisms and crisis response
+                <div class="benefit-card">
+                    <h4 class="benefit-title">🕌 Shariah Compliance</h4>
+                    <p class="benefit-description">Fully riba-free alternative to IMF/World Bank lending, opening access to Islamic finance markets and sovereign wealth funds</p>
                 </div>
-                <div>
-                    <strong>Operational Risk:</strong> Institutional-grade security with blockchain technology and multi-signature protocols
+                <div class="benefit-card">
+                    <h4 class="benefit-title">📈 Non-Inflationary Growth</h4>
+                    <p class="benefit-description">Asset-backed liquidity model preserves purchasing power while expanding financial access without monetary inflation risks</p>
+                </div>
+                <div class="benefit-card">
+                    <h4 class="benefit-title">🌐 Geopolitical Balance</h4>
+                    <p class="benefit-description">Hong Kong issuance ensures regulatory flexibility while maintaining ties to both Chinese and Western financial systems</p>
+                </div>
+                <div class="benefit-card">
+                    <h4 class="benefit-title">🔗 Financial Integration</h4>
+                    <p class="benefit-description">Seamless interoperability with existing banking systems, payment networks, and regulatory frameworks</p>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <p><strong>March 2025 | Internal Document | Private & Confidential | Version 2.0</strong></p>
-            <p style="margin-top: 10px;">This strategic initiative represents a transformative approach to global finance, bridging traditional monetary systems with innovative Shariah-compliant solutions while strengthening USD's global reserve status and providing sustainable sovereign debt alternatives.</p>
+        <!-- Risk Management -->
+        <div class="risk-management-card animate-in">
+            <div class="card-header">
+                <div class="card-icon">🛡️</div>
+                <h3 class="card-title">Comprehensive Risk Management Framework</h3>
+            </div>
+            <div class="risk-grid">
+                <div class="risk-item">
+                    <strong>Regulatory Risk</strong>
+                    Multi-jurisdictional compliance with HKMA, Basel III, and Islamic finance standards
+                </div>
+                <div class="risk-item">
+                    <strong>Geopolitical Risk</strong>
+                    Strategic positioning as complementary system maintaining USD stability
+                </div>
+                <div class="risk-item">
+                    <strong>Financial Risk</strong>
+                    Asset-backed reserves with automated stabilization mechanisms and crisis response
+                </div>
+                <div class="risk-item">
+                    <strong>Operational Risk</strong>
+                    Institutional-grade security with blockchain technology and multi-signature protocols
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="document-footer animate-in">
+            <h3 class="footer-title">March 2025 | Internal Document | Private & Confidential | Version 2.0</h3>
+            <p class="footer-text">This strategic initiative represents a transformative approach to global finance, bridging traditional monetary systems with innovative Shariah-compliant solutions while strengthening USD's global reserve status and providing sustainable sovereign debt alternatives.</p>
         </div>
     </div>
 
     <!-- Floating Access Button -->
-    <a href="https://stablecoin-usvt.github.io/Strategic-Implementation-full-doc/" class="floating-access-btn" target="_blank">
-        📖 Strategic Document
+    <a href="#" class="floating-access" onclick="openFullDocument()">
+        📖 Document Access
     </a>
 
     <script>
-        // Add subtle animation to cards on scroll
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -621,54 +626,234 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Observe all cards
-        document.querySelectorAll('.summary-card, .framework-item, .benefit-item, .timeline-phase, .stat-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        // Observe all animated elements
+        document.querySelectorAll('.animate-in').forEach(el => {
+            observer.observe(el);
         });
 
-        // Add counter animation for statistics
+        // Counter animation
         const animateCounters = () => {
-            const counters = document.querySelectorAll('.stat-number');
+            const counters = document.querySelectorAll('.metric-number');
             counters.forEach(counter => {
                 const target = counter.textContent;
                 if (target.includes('$') || target.includes('-')) return;
                 
-                const updateCounter = () => {
-                    const count = +counter.innerText;
-                    const increment = target / 200;
-                    
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCounter, 1);
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
                     } else {
-                        counter.innerText = target;
+                        counter.textContent = Math.ceil(current);
                     }
-                };
-                
-                updateCounter();
+                }, 100);
             });
         };
 
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
+        // Trigger counter animation when metrics are visible
+        const metricsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateCounters();
-                    statsObserver.unobserve(entry.target);
+                    metricsObserver.unobserve(entry.target);
                 }
             });
         });
 
-        statsObserver.observe(document.querySelector('.key-stats'));
+        const metricsGrid = document.querySelector('.metrics-grid');
+        if (metricsGrid) {
+            metricsObserver.observe(metricsGrid);
+        }
+
+        // Modal functions
+        function openFullDocument() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                padding: 40px;
+                border-radius: 8px;
+                text-align: center;
+                max-width: 600px;
+                margin: 20px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            `;
+
+            modalContent.innerHTML = `
+                <h3 style="color: #EE1C25; margin-bottom: 20px; font-size: 1.5rem; font-weight: 600;">📄 Strategic Implementation Document</h3>
+                <p style="margin-bottom: 30px; line-height: 1.6; color: #4a5568;">Access the complete 107-page Strategic Implementation of USVT & Global Financial Restructuring document. This institutional-grade document provides a comprehensive framework for the $1 trillion USD initiative, covering strategic vision, banking integration, sovereign debt solutions, and global implementation across all major financial markets.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="openPDFDocument()" 
+                            style="background: #EE1C25; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                        📋 Open PDF Document
+                    </button>
+                    <button onclick="downloadPDF()" 
+                            style="background: #6c757d; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                        💾 Download PDF
+                    </button>
+                    <button onclick="this.closest('.modal-overlay').remove()" 
+                            style="background: #6c757d; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                        ✕ Close
+                    </button>
+                </div>
+            `;
+
+            modal.className = 'modal-overlay';
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        function openPDFDocument() {
+            // Link to the PDF document hosted on GitHub
+            const pdfUrl = 'https://github.com/yourusername/yourrepository/raw/main/Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
+            
+            // Open PDF in new window/tab
+            const newWindow = window.open(pdfUrl, '_blank');
+            
+            if (newWindow) {
+                setTimeout(() => {
+                    alert('✅ PDF Document Opened Successfully!\n\nThe complete 107-page Strategic Implementation of USVT & Global Financial Restructuring document is now open in a new tab.\n\n📋 Document Features:\n• Executive Summary & Strategic Vision\n• Institutional Framework & Banking Structure\n• Government Engagement & Sovereign Debt Solutions\n• Shariah-Compliant Financial Model\n• Implementation Roadmap & Risk Management\n• Global Impact Assessment');
+                }, 500);
+            } else {
+                // Fallback: provide direct download link
+                alert('🚫 Popup Blocked\n\nPlease allow popups to open the PDF document, or copy this link to access it directly:\n\n' + pdfUrl);
+            }
+            
+            document.querySelector('.modal-overlay').remove();
+        }
+
+        function downloadPDF() {
+            // Direct download link to the PDF document
+            const pdfUrl = 'https://github.com/yourusername/yourrepository/raw/main/Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
+            link.target = '_blank';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+                alert('📥 Download Initiated!\n\n✅ Strategic Implementation of USVT & Global Financial Restructuring\n\n📄 File: Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf\n📊 Size: 107 pages\n📅 Version: March 2025, v2.0\n🔒 Classification: Internal Document - Private & Confidential\n\nThe download should begin automatically. If not, please check your browser\'s download settings.');
+            }, 1000);
+            
+            document.querySelector('.modal-overlay').remove();
+        }
+
+        function generateComprehensiveHTML() {
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Implementation of USVT & Global Financial Restructuring</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #2c3e50; background: #ffffff; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; }
+        .cover { background: linear-gradient(135deg, #EE1C25 0%, #c41e3a 100%); color: white; padding: 100px 50px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .cover h1 { font-size: 3rem; margin-bottom: 30px; font-weight: 400; }
+        .cover .meta { margin-top: 60px; font-size: 1rem; }
+        .content { padding: 50px; }
+        .toc { background: #f8f9fa; padding: 40px; margin: 30px 0; border-left: 4px solid #EE1C25; }
+        .section { margin: 40px 0; }
+        .section h2 { color: #EE1C25; font-size: 2rem; margin-bottom: 20px; border-bottom: 2px solid #EE1C25; padding-bottom: 10px; }
+        .section h3 { color: #c41e3a; font-size: 1.4rem; margin: 25px 0 15px; }
+        .intro { background: #fef2f2; padding: 25px; margin: 20px 0; border-left: 4px solid #EE1C25; }
+        .highlight-box { background: #EE1C25; color: white; padding: 25px; margin: 25px 0; }
+        .key-point { background: #f0f9ff; padding: 20px; margin: 20px 0; border-left: 4px solid #3b82f6; }
+        @media print { .section { page-break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cover">
+            <h1>Strategic Implementation<br>of USVT<br>Global Financial Restructuring</h1>
+            <div class="meta">
+                <p><strong>March 2025</strong></p><br>
+                <p>Internal Document | Private & Confidential | Version 2.0</p><br>
+                <p>$1 Trillion USD Financial Infrastructure Initiative</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="toc">
+                <h2 style="color: #EE1C25;">Table of Contents</h2>
+                <div style="line-height: 1.8;">
+                    <p>Executive Summary................................6</p>
+                    <p>Strategic Overview...............................11</p>
+                    <p>Institutional Framework..........................19</p>
+                    <p>USVT Development Strategy.......................25</p>
+                    <p>Government Engagement...........................32</p>
+                    <p>Shariah-Compliant Financial Model..............40</p>
+                    <p>Geopolitical Considerations....................47</p>
+                    <p>Implementation Roadmap..........................99</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Executive Summary</h2>
+                
+                <div class="intro">
+                    <p>The USVT (USD Value Trust) initiative represents a transformative $1 trillion USD financial infrastructure designed to bridge traditional monetary systems with innovative Shariah-compliant solutions.</p>
+                </div>
+                
+                <h3>Strategic Vision</h3>
+                <p>USVT functions as a complementary rather than disruptive force within the global monetary system, built upon USD reserve-backed structure and issued via Hong Kong.</p>
+                
+                <div class="highlight-box">
+                    <h3>Key Implementation Phases</h3>
+                    <p><strong>Phase 1 (0-12 Months):</strong> Foundation and banking integration</p>
+                    <p><strong>Phase 2 (12-24 Months):</strong> Sovereign engagement and pilot programs</p>
+                    <p><strong>Phase 3 (24-48 Months):</strong> Global recognition and adoption</p>
+                </div>
+
+                <h3>Expected Outcomes</h3>
+                <p>The initiative will strengthen USD's global reserve status while providing sustainable alternatives to traditional sovereign debt mechanisms.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 40px; margin: 40px 0; text-align: center;">
+                <h3 style="color: #EE1C25;">Document Classification</h3>
+                <p><strong>Title:</strong> Strategic Implementation of USVT & Global Financial Restructuring</p>
+                <p><strong>Date:</strong> March 2025 | <strong>Version:</strong> 2.0</p>
+                <p><strong>Classification:</strong> Internal Document - Private & Confidential</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+        }
     </script>
 </body>
 </html>
