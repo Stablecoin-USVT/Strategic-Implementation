@@ -28,7 +28,7 @@
         .header-section {
             background: #EE1C25;
             color: white;
-            padding: 60px;
+            padding: 30px 40px;
             margin-bottom: 60px;
             text-align: center;
             border-radius: 50px;
@@ -214,30 +214,28 @@
         }
 
         .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            display: flex;
+            gap: 20px;
             margin-top: 40px;
-        }
-
-        @media (max-width: 992px) {
-            .timeline-grid {
-                grid-template-columns: 1fr;
-            }
+            align-items: stretch;
         }
 
         .timeline-card {
             background: #ffffff;
             padding: 35px 25px;
-            border-radius: 8px;
+            border-radius: 20px;
             position: relative;
             border: 1px solid #e0e6ed;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
         }
 
         .timeline-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-color: #EE1C25;
         }
 
@@ -245,45 +243,60 @@
             position: absolute;
             top: -15px;
             left: 25px;
-            width: 35px;
-            height: 35px;
-            background: #EE1C25;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #EE1C25, #c41e3a);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(238, 28, 37, 0.3);
         }
 
         .phase-title {
-            margin-top: 10px;
-            font-size: 1.3rem;
+            margin-top: 15px;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #1a202c;
             margin-bottom: 15px;
+            line-height: 1.3;
         }
 
         .phase-list {
             list-style: none;
             padding: 0;
+            flex-grow: 1;
         }
 
         .phase-list li {
-            padding: 6px 0;
+            padding: 8px 0;
             color: #4a5568;
             position: relative;
             padding-left: 20px;
             line-height: 1.5;
+            font-size: 0.95rem;
         }
 
         .phase-list li::before {
-            content: '•';
+            content: '→';
             position: absolute;
             left: 0;
             color: #EE1C25;
             font-weight: bold;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .timeline-card {
+                min-height: auto;
+            }
         }
 
         .benefits-section {
@@ -338,9 +351,15 @@
 
         .risk-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .risk-item {
@@ -614,7 +633,7 @@
 
     <!-- Floating Access Button -->
     <a href="#" class="floating-access" onclick="openFullDocument()">
-        📖 Document Access
+        📖 Strategy Document
     </a>
 
     <script>
@@ -701,8 +720,7 @@
             `;
 
             modalContent.innerHTML = `
-                <h3 style="color: #EE1C25; margin-bottom: 20px; font-size: 1.5rem; font-weight: 600;">📄 Strategic Implementation Document</h3>
-                <p style="margin-bottom: 30px; line-height: 1.6; color: #4a5568;">Access the complete 107-page Strategic Implementation of USVT & Global Financial Restructuring document. This institutional-grade document provides a comprehensive framework for the $1 trillion USD initiative, covering strategic vision, banking integration, sovereign debt solutions, and global implementation across all major financial markets.</p>
+                <h3 style="color: #EE1C25; margin-bottom: 30px; font-size: 1.5rem; font-weight: 600;">📄 Document Access</h3>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <button onclick="openPDFDocument()" 
                             style="background: #EE1C25; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
