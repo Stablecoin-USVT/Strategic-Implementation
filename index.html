@@ -90,9 +90,23 @@
 
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             margin: 50px 0;
+        }
+
+        @media (max-width: 1200px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         .metric-card {
@@ -549,6 +563,7 @@
                     <h4 class="phase-title">Sovereign Engagement (12-24 Months)</h4>
                     <ul class="phase-list">
                         <li>Uganda $22B debt relief pilot program</li>
+                        <li>CCCC China Communications Construction Company engagement</li>
                         <li>African, GCC, and Asian central bank engagement</li>
                         <li>Shariah-compliant sovereign credit facilities</li>
                         <li>Trade finance and infrastructure programs</li>
@@ -573,7 +588,7 @@
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <h4 class="benefit-title">🏛️ USD Stability Enhancement</h4>
-                    <p class="benefit-description">Strengthens rather than weakens USD's global reserve status through structured reserve backing and controlled issuance mechanisms</p>
+                    <p class="benefit-description">Strengthens USD's global reserve status through structured reserve backing and controlled issuance mechanisms</p>
                 </div>
                 <div class="benefit-card">
                     <h4 class="benefit-title">💰 Sovereign Debt Relief</h4>
@@ -589,7 +604,7 @@
                 </div>
                 <div class="benefit-card">
                     <h4 class="benefit-title">🌐 Geopolitical Balance</h4>
-                    <p class="benefit-description">Hong Kong issuance ensures regulatory flexibility while maintaining ties to both Chinese and Western financial systems</p>
+                    <p class="benefit-description">Hong Kong issuance ensures regulatory flexibility while maintaining ties to both Eastern and Western financial systems</p>
                 </div>
                 <div class="benefit-card">
                     <h4 class="benefit-title">🔗 Financial Integration</h4>
@@ -754,16 +769,7 @@
             const pdfUrl = 'https://stablecoin-usvt.github.io/Strategic-Implementation/Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
             
             // Open PDF in new window/tab
-            const newWindow = window.open(pdfUrl, '_blank');
-            
-            if (newWindow) {
-                setTimeout(() => {
-                    alert('✅ PDF Document Opened Successfully!\n\nThe complete 107-page Strategic Implementation of USVT & Global Financial Restructuring document is now open in a new tab.\n\n📋 Document Features:\n• Executive Summary & Strategic Vision\n• Institutional Framework & Banking Structure\n• Government Engagement & Sovereign Debt Solutions\n• Shariah-Compliant Financial Model\n• Implementation Roadmap & Risk Management\n• Global Impact Assessment');
-                }, 500);
-            } else {
-                // Fallback: provide direct download link
-                alert('🚫 Popup Blocked\n\nPlease allow popups to open the PDF document, or copy this link to access it directly:\n\n' + pdfUrl);
-            }
+            window.open(pdfUrl, '_blank');
             
             document.querySelector('.modal-overlay').remove();
         }
@@ -772,20 +778,34 @@
             // Direct download link to the PDF document
             const pdfUrl = 'https://stablecoin-usvt.github.io/Strategic-Implementation/Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
             
-            // Create download link
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
-            link.target = '_blank';
-            
-            // Trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            setTimeout(() => {
-                alert('📥 Download Initiated!\n\n✅ Strategic Implementation of USVT & Global Financial Restructuring\n\n📄 File: Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf\n📊 Size: 107 pages\n📅 Version: March 2025, v2.0\n🔒 Classification: Internal Document - Private & Confidential\n\nThe download should begin automatically. If not, please check your browser\'s download settings.');
-            }, 1000);
+            // Use fetch to download the file
+            fetch(pdfUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
+                    
+                    // Trigger download
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Clean up the URL object
+                    URL.revokeObjectURL(link.href);
+                })
+                .catch(error => {
+                    // Fallback: try direct download method
+                    const link = document.createElement('a');
+                    link.href = pdfUrl;
+                    link.download = 'Strategic-Implementation-USVT-Global-Financial-Restructuring.pdf';
+                    link.style.display = 'none';
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
             
             document.querySelector('.modal-overlay').remove();
         }
